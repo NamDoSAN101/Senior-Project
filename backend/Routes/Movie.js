@@ -177,21 +177,28 @@ router.post("/bookticket", authTokenHandler, async (req, res, next) => {
       });
     }
 
-    const movieSchedule = screen.movieSchedules.find((schedule) => {
-      console.log(schedule);
-      let showDate1 = new Date(schedule.showDate);
-      let showDate2 = new Date(showDate);
-      if (
-        showDate1.getDay() === showDate2.getDay() &&
-        showDate1.getMonth() === showDate2.getMonth() &&
-        showDate1.getFullYear() === showDate2.getFullYear() &&
-        schedule.showTime === showTime &&
-        schedule.movieId == movieId
-      ) {
-        return true;
-      }
-      return false;
-    });
+    // const movieSchedule = screen.movieSchedules.find((schedule) => {
+    //   console.log(schedule);
+    //   let showDate1 = new Date(schedule.showDate);
+    //   let showDate2 = new Date(showDate);
+    //   if (
+    //     showDate1.getDay() === showDate2.getDay() &&
+    //     showDate1.getMonth() === showDate2.getMonth() &&
+    //     showDate1.getFullYear() === showDate2.getFullYear() &&
+    //     schedule.showTime === showTime &&
+    //     schedule.movieId == movieId
+    //   ) {
+    //     return true;
+    //   }
+    //   return false;
+    // });
+
+    const movieSchedule = screen.movieSchedules.find(
+      (schedule) =>
+        schedule.movieId == movieId &&
+        schedule.showTime == showTime &&
+        schedule.showDate == showDate
+    );
 
     if (!movieSchedule) {
       return res.status(404).json({
@@ -199,6 +206,7 @@ router.post("/bookticket", authTokenHandler, async (req, res, next) => {
         message: "Movie schedule not found",
       });
     }
+
     const user = await User.findById(req.userId);
     if (!user) {
       return res.status(404).json({
@@ -207,6 +215,7 @@ router.post("/bookticket", authTokenHandler, async (req, res, next) => {
       });
     }
     console.log("before newBooking done");
+
     const newBooking = new Booking({
       userId: req.userId,
       showTime,
@@ -221,13 +230,18 @@ router.post("/bookticket", authTokenHandler, async (req, res, next) => {
     await newBooking.save();
     console.log("newBooking done");
 
-    movieSchedule.notAvailableSeats.push(...seats);
+    // follow clip
+    const seatIds = seats.map((seat) => seat.seat_id);
+
+    movieSchedule.notAvailableSeats.push(...seatIds);
+
     await screen.save();
     console.log("screen saved");
 
     user.bookings.push(newBooking._id);
     await user.save();
     console.log("user saved");
+
     res.status(201).json({
       ok: true,
       message: "Booking successful",
@@ -236,7 +250,8 @@ router.post("/bookticket", authTokenHandler, async (req, res, next) => {
     next(err); // Pass any errors to the error handling middleware
   }
 });
-router.get("/getmovies", async (req, res, next) => {
+
+router.get("/movies", async (req, res, next) => {
   try {
     const movies = await Movie.find();
 
@@ -250,16 +265,47 @@ router.get("/getmovies", async (req, res, next) => {
     next(err); // Pass any errors to the error handling middleware
   }
 });
-router.get("/getscreens", async (req, res, next) => {
+router.get("/movies/:id", async (req, res, next) => {
   try {
-    const movies = await Movie.find();
+    const movieId = req.params.id;
+    const movie = await Movie.findById(movieId);
+    if (!movie) {
+      // If the movie is not found, return a 404 Not Found response
+      return res.status(404).json({
+        ok: false,
+        message: "Movie not found",
+      });
+    }
 
-    // Return the list of movies as JSON response
     res.status(200).json({
       ok: true,
-      data: movies,
-      message: "Movies retrieved successfully",
+      data: movie,
+      message: "Movie retrieved successfully",
     });
+  } catch (err) {
+    next(err); // Pass any errors to the error handling middleware
+  }
+});
+
+router.get("/screensbycity/:city", async (req, res, next) => {
+  const city = req.params.city.toLowerCase();
+
+  try {
+    //follow clip
+    // const city = req.params.city;
+
+    const screens = await Screen.find({ city });
+    if (!screens || screens.length === 0) {
+      return res
+        .status(404)
+        .json(
+          createResponse(false, "No screens found in the specified city", null)
+        );
+    }
+
+    res
+      .status(200)
+      .json(createResponse(true, "Screens retrieved successfully", screens));
   } catch (err) {
     next(err); // Pass any errors to the error handling middleware
   }
