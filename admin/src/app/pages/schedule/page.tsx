@@ -114,7 +114,7 @@ const page = () => {
       </div>
 
       <div className="items">
-        <h1>Screens</h1>
+        <h1>Location</h1>
         {screens?.map((screen, index) => (
           <div
             className={
@@ -134,7 +134,7 @@ const page = () => {
       </div>
 
       <div className="items">
-        <h1>Movies</h1>
+        <h1>Markets</h1>
         {movies?.map((movie, index) => (
           <div
             className={

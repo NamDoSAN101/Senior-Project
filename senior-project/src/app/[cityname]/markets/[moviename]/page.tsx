@@ -200,7 +200,7 @@ const MoviePage = () => {
                 <span>•</span>
                 <span className="releasedat">{movie.releasedate}</span>
               </p>
-              <a href={`${pathname}/buytickets`} className="linkstylenone">
+              <a href={`${pathname}/bookings`} className="linkstylenone">
                 <button className="bookbtn">Book Tickets</button>
               </a>
             </div>

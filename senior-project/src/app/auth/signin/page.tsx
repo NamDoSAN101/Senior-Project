@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import "../auth.css";
 import Link from "next/link";
 import { toast } from "react-toastify";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/MAREAs.png";
 // import { getCookie , setCookie} from 'cookies-next';
 
 interface FormData {
@@ -48,6 +48,7 @@ const Signin = () => {
   };
 
   return (
+    // <body>
     <div className="authout">
       <div className="authin">
         <div className="left">
@@ -100,6 +101,7 @@ const Signin = () => {
         </div>
       </div>
     </div>
+    // </body>
   );
 };
 

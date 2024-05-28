@@ -27,16 +27,7 @@ const CreateMoviePage = () => {
     duration: 0,
   });
 
-  const genres = [
-    "Action",
-    "Comedy",
-    "Drama",
-    "Fantasy",
-    "Horror",
-    "Science Fiction",
-    "Thriller",
-    "Other",
-  ];
+  const genres = ["Night", "Fresh", "Community", "Flea", "Other"];
 
   const handleGenreChange = (genre: string) => {
     if (movie.genre.includes(genre)) {
@@ -229,7 +220,7 @@ const CreateMoviePage = () => {
       />
       <br />
 
-      <button onClick={handleCreateMovie}>Create Movie</button>
+      <button onClick={handleCreateMovie}>Create Market</button>
     </div>
   );
 };

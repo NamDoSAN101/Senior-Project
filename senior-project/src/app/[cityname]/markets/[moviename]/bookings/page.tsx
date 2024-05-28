@@ -16,17 +16,29 @@ const page = () => {
     type: "Action/Thriller",
     screens: [
       {
-        name: "Screen 1",
-        location: "PVR Cinemas, Forum Mall, Koramangala",
+        name: "ตลาดเซฟวัน GO",
+        location: "MARKET, Mall, Bangkok",
       },
       {
-        name: "Screen 2",
-        location: "PVR Cinemas, Forum Mall, Koramangala",
+        name: "ตลาดอินดี้ดาวคะนอง",
+        location: "MARKET, Mall, Bangkok",
       },
       {
-        name: "Screen 3",
-        location: "PVR Cinemas, Forum Mall, Koramangala",
+        name: "ตลาดนัดรถไฟ",
+        location: "MARKET, Mall, Bangkok",
       },
+      // {
+      //   name: "Screen 1",
+      //   location: "PVR Cinemas, Forum Mall, Koramangala",
+      // },
+      // {
+      //   name: "Screen 2",
+      //   location: "PVR Cinemas, Forum Mall, Koramangala",
+      // },
+      // {
+      //   name: "Screen 3",
+      //   location: "PVR Cinemas, Forum Mall, Koramangala",
+      // },
     ],
   };
 
@@ -39,16 +51,20 @@ const page = () => {
       <div className="s1">
         <div className="head">
           <h1>
-            {movie.moviename} - {movie.language}
+            Night Market - Bangkok
+            {/* {movie.moviename} - {movie.language} */}
           </h1>
-          <h3>{movie.type}</h3>
+          <h3>
+            Location / Market
+            {/* {movie.type} */}
+          </h3>
         </div>
         <DatePicker
           getSelectedDay={selectedDay}
           endDate={100}
           selectDate={new Date("2020-04-30")}
           labelFormat={"MMMM"}
-          color={"rgb(248, 68, 100)"}
+          color={"#444B8E"}
         />
       </div>
       <div className="screens">

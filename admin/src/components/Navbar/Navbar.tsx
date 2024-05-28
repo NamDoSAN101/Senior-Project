@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import "./Navbar.css";
-import logo from "./logo.png";
+import logo from "./MAREAs.png";
 
 const Navbar = () => {
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
@@ -48,10 +48,10 @@ const Navbar = () => {
         {isAdminAuthenticated ? (
           <>
             {/* Show links for authenticated admin */}
-            <Link href="/pages/movie/createmovie">Add Movie</Link>
-            <Link href="/pages/screen">Add Screen</Link>
+            <Link href="/pages/movie/createmovie">Add Market</Link>
+            <Link href="/pages/screen">Add Location</Link>
             <Link href="/pages/schedule">Add Schedule</Link>
-            <Link href="/pages/movie/addceleb">Add Celeb</Link>
+            {/* <Link href="/pages/movie/addceleb">Add Celeb</Link> */}
           </>
         ) : (
           <>

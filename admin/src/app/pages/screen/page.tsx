@@ -751,51 +751,51 @@ const CreateScreenPage: React.FC = () => {
       <br />
 
       <div>
-        Screen Type:
+        Market Type:
         <label>
           <input
             type="radio"
             name="screenType"
-            value="3D"
-            checked={screen.screenType === "3D"}
+            value="Night"
+            checked={screen.screenType === "Night"}
             onChange={handleScreenTypeChange}
           />
-          3D
+          Night
         </label>
         <label>
           <input
             type="radio"
             name="screenType"
-            value="2D"
-            checked={screen.screenType === "2D"}
+            value="Fresh"
+            checked={screen.screenType === "Fresh"}
             onChange={handleScreenTypeChange}
           />
-          2D
+          Fresh
         </label>
         <label>
           <input
             type="radio"
             name="screenType"
-            value="4D"
-            checked={screen.screenType === "4D"}
+            value="Community"
+            checked={screen.screenType === "Community"}
             onChange={handleScreenTypeChange}
           />
-          4D
+          Community
         </label>
         <label>
           <input
             type="radio"
             name="screenType"
-            value="IMAX"
-            checked={screen.screenType === "IMAX"}
+            value="Flea"
+            checked={screen.screenType === "Flea"}
             onChange={handleScreenTypeChange}
           />
-          IMAX
+          Flea
         </label>
       </div>
       <br />
 
-      <button onClick={handleSubmit}>Create Screen</button>
+      <button onClick={handleSubmit}>Create Location</button>
     </div>
   );
 };

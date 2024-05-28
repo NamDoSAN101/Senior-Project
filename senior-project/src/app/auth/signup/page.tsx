@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import "../auth.css";
 import Link from "next/link";
 import { toast } from "react-toastify";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/MAREAs.png";
 
 interface FormData {
   name: string;
@@ -125,7 +125,7 @@ const Signup = () => {
               )}
             </div>
 
-            <div className="forminput_cont">
+            {/* <div className="forminput_cont">
               <label>City</label>
               <input
                 type="text"
@@ -135,10 +135,53 @@ const Signup = () => {
                 onChange={handleChange}
               />
               {errors.city && <span className="formerror">{errors.city}</span>}
+            </div> */}
+
+            <div className="forminput_cont">
+              <label>Address</label>
+              <input
+                type="text"
+                placeholder="Enter Your Address"
+                name="add"
+                // value={formData.city}
+                // onChange={handleChange}
+              />
+              {/* {errors.city && <span className="formerror">{errors.city}</span>} */}
+            </div>
+
+            <div className="forminput_cont">
+              <label>Phone number</label>
+              <input
+                type="text"
+                placeholder="Enter Your Phone number"
+                name="phone"
+                // value={formData.city}
+                // onChange={handleChange}
+              />
+              {/* {errors.city && <span className="formerror">{errors.city}</span>} */}
+            </div>
+
+            <div className="forminput_cont">
+              <label>Status</label>
+              {/* <input
+                type="text"
+                placeholder="Enter Your City"
+                name="city"
+                value={formData.city}
+                onChange={handleChange}
+              /> */}
+              <label>
+                <input type="checkbox" name="genre" className="check" />
+                ผู้เช่า
+                <input type="checkbox" name="genre" className="check" />
+                เจ้าของพื้นที่
+              </label>
+              {/* {errors.city && <span className="formerror">{errors.city}</span>} */}
             </div>
 
             <button type="submit" className="main_button">
               Register
+              <Link href="/auth/signin"></Link>
             </button>
             <p className="authlink">
               Already have an account? <Link href="/auth/signin">login</Link>

@@ -1,5 +1,5 @@
 .selectseatpage .head {
-  background-color: var(--col2);
+  background-color: #f4ece2;
   padding: 10px;
 }
 
@@ -14,7 +14,7 @@
 }
 
 .selectseatpage .head h1 {
-  color: white;
+  color: #444b8e;
   font-size: 25px;
   font-weight: 600;
 }
@@ -166,7 +166,7 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  gap: 50px;
+  gap: 10px;
 }
 
 .seat-col {

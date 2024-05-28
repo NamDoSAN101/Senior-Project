@@ -6,7 +6,7 @@ import "./MovieCard.css";
 
 const MovieCard = (data: MovieCardType) => {
   const router = useRouter();
-  const city = "mumbai";
+  const city = "bkk";
 
   // const { _id, title, genre, rating, portraitImgUrl } = data.Movie;
   const { _id, title, type, rating, imageUrl } = data;
@@ -16,7 +16,7 @@ const MovieCard = (data: MovieCardType) => {
       className="moviecard"
       onClick={() => {
         // router.push(`/${city}/movies/${_id}`);
-        router.push(`${city}/movies/${title}`);
+        router.push(`${city}/markets/${title}`);
       }}
     >
       <div

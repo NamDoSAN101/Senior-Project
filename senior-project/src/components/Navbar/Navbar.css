@@ -1,5 +1,5 @@
 nav {
-  background-color: var(--col2);
+  background-color: #f4ece2;
   color: white;
   display: flex;
   justify-content: space-between;
@@ -14,7 +14,13 @@ nav {
 nav img {
   height: 30px;
   margin-right: 10px;
+  border-radius: 2px;
 }
+
+.logoText {
+  color: #444b8e;
+}
+
 .searchbox {
   display: flex;
   align-items: center;
